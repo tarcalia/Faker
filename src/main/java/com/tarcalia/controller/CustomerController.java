@@ -3,19 +3,23 @@ package com.tarcalia.controller;
 import com.tarcalia.model.Customer;
 import com.tarcalia.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 /**
  * Controller for {@link Customer} entities.
  */
-@RestController
+@RestController("/customer")
 public class CustomerController {
     @Autowired
     private CustomerService service;
 
-    @GetMapping("/customers")
+    @GetMapping("/list")
     public Iterable<Customer> getCustomers() {
         return service.findAll();
     }
